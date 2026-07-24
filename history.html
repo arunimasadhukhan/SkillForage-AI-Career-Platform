@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment History - SkillForge</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; padding: 40px; color: #333; }
+        .container { max-width: 650px; margin: auto; }
+        h2 { color: #1e293b; margin-bottom: 20px; }
+        .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border-left: 5px solid #10b981; }
+        .card h4 { margin: 0 0 10px 0; color: #1e293b; }
+        .card p { margin: 6px 0; color: #475569; line-height: 1.5; }
+        .score-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 14px; }
+        .time-stamp { display: block; margin-top: 12px; color: #94a3b8; font-size: 12px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #2563eb; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .empty-state { text-align: center; background: white; padding: 40px; border-radius: 10px; color: #64748b; box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
+        
+        /* Developer verification footer styling */
+        .dev-footer {
+            margin-top: 40px; 
+            text-align: center; 
+            font-size: 13px; 
+            color: #64748b; 
+            border-top: 1px solid #cbd5e1; 
+            padding-top: 20px;
+        }
+        .dev-footer a {
+            color: #2563eb;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Dashboard</a>
+        <h2>📊 Saved Recommendation History</h2>
+        
+        {% for item in history %}
+        <div class="card">
+            <h4>📄 File: {{ item.filename }}</h4>
+            <p><strong>AI Career Readiness:</strong> <span class="score-badge">{{ item.score }}/100</span></p>
+            <p><strong>Guidance:</strong> {{ item.recommendation }}</p>
+            <span class="time-stamp">Processed on: {{ item.uploaded_at }}</span>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <p>No career processing records found yet. Go back and upload a resume!</p>
+        </div>
+        {% endfor %}
+
+        <!-- Anti-Plagiarism Ownership Footer Block -->
+        <div class="dev-footer">
+            <p>© SkillForge Platform. All Rights Reserved.</p>
+            <p>Proprietary Source Architecture Created By: <strong>Arunima Sadhukhan (ECE)</strong></p>
+            <a href="https://linkedin.com" target="_blank">Verify Original Developer Identity</a>
+        </div>
+    </div>
+</body>
+</html>
+
